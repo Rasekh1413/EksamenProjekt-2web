@@ -90,43 +90,43 @@ CREATE TABLE HukommelseRAM (
     FOREIGN KEY (KompetenceID) REFERENCES Kompetencer(KompetenceID)
 );
 
--- Insert into Akademi
+-- Akademi
 INSERT INTO Akademi (AkademiNavn, Beskrivelse, AkademiAdresse, AkademiLokation)
 VALUES 
 ('Zealand Campus Køge', 'IT Education Hub', 'Lyngvej 21, 4600 Køge', 'Køge'),
 ('Zealand Campus Roskilde', 'Business Programs', 'Maglegårdsvej 8, 4000 Roskilde', 'Roskilde');
 
--- Insert into Lærere (Lynda and Maria)
+-- Lærere (Lynda and Maria)
 INSERT INTO Lærere (Navn, Email, Adgangskode, Telefonnummer, Ansættelsesform, AkademiID)
 VALUES 
 ('Lynda Jensen', 'lynda@zealand.dk', 'hashed_password_1', '+45 12345678', 'Full-time', 1),
 ('Maria Sørensen', 'maria@zealand.dk', 'hashed_password_2', '+45 87654321', 'Part-time', 1);
 
--- Insert into Uddannelse
+-- Uddannelse
 INSERT INTO Uddannelse (UddannelseNavn, Beskrivelse, Semester, Lokale, AkademiID)
 VALUES 
 ('Datamatiker', 'Software Development', 2, 'Room A1', 1),
 ('Webudvikling', 'Frontend & Backend', 2, 'Room B2', 1);
 
--- Insert into Studieleder (Per and Ivan)
+-- Studieleder (Per and Ivan)
 INSERT INTO Studieleder (Navn, Email, Telefon, Adgangskode, AkademiID)
 VALUES 
 ('Per Hansen', 'per@zealand.dk', '+45 11223344', 'hashed_password_3', 1),
 ('Ivan Nielsen', 'ivan@zealand.dk', '+45 44332211', 'hashed_password_4', 1);
 
--- Insert into Fag
+-- Fag
 INSERT INTO Fag (FagNavn, UddannelseID)
 VALUES 
 ('Programming 1.2', 1),
 ('Database Design', 1);
 
--- Insert into Kompetencer
+-- Kompetencer
 INSERT INTO Kompetencer (KompetenceNavn, FagID)
 VALUES 
 ('C#', 1),
 ('SQL', 2);
 
--- Insert into HukommelseRAM - Allokering
+-- HukommelseRAM - Allokering
 INSERT INTO HukommelseRAM (Kalender, AkademiID, UddannelseID, FagID, LærerID, KompetenceID)
 VALUES 
 ('2025-03-01 10:00:00', 1, 1, 1, 1, 1),

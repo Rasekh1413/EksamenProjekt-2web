@@ -1,7 +1,23 @@
+using EFCZealand.Services;
+//using Microsoft.AspNetCore.DataProtection.Repositories;
+
 var builder = WebApplication.CreateBuilder(args);
+
+var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 
 // Add services to the container.
 builder.Services.AddRazorPages();
+
+builder.Services.AddSingleton<IAkademiRepository, AkademiRepository>();
+builder.Services.AddSingleton<IStudielederRepository, StudielederRepository>();
+builder.Services.AddSingleton<IUddannelseRepository, UddannelseRepository>();
+builder.Services.AddSingleton<IFagRepository, FagRepository>();
+builder.Services.AddSingleton<ILærereRepository, LærereRepository>();
+builder.Services.AddSingleton<IKompetencerRepository, KompetencerRepository>();
+
+builder.Services.AddSingleton<IHukommelseRamRepository, HukommelseRamRepository>();
+
+
 
 var app = builder.Build();
 

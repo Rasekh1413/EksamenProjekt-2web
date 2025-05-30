@@ -1,0 +1,14 @@
+﻿@page
+@model EFCZealand.Pages.Kompetencer.SletModel
+@{
+}
+
+<h1 class="display-3 mb-5">Vil du slette denne kompetence?</h1>
+
+<div class="alert alert-danger">
+    <h5>Er du sikker på, at du vil slette @Model.Element.KompetenceNavn (@Model.Element.KompetenceNavn)</h5>
+    <form method="post">
+        <input type="submit" value="Ja" class="btn btn-outline-danger mt-3">
+        <a class="btn btn-outline-primary mt-3" asp-page="/Kompetencer/Alle">Nej</a>
+    </form>
+</div>

@@ -11,109 +11,120 @@ public partial class ZealandDBContext : DbContext
     public ZealandDBContext()
     {
     }
+
     public ZealandDBContext(DbContextOptions<ZealandDBContext> options)
         : base(options)
     {
     }
+
     public virtual DbSet<Akademi> Akademis { get; set; }
 
     public virtual DbSet<Fag> Fags { get; set; }
 
-    public virtual DbSet<HukommelseRam> HukommelseRams { get; set; }
+    public virtual DbSet<Kompetence> Kompetences { get; set; }
 
-    public virtual DbSet<Kompetencer> Kompetencers { get; set; }
+    public virtual DbSet<Lærer> Lærers { get; set; }
 
-    public virtual DbSet<Lærere> Læreres { get; set; }
+    public virtual DbSet<LærerOgKompetenceAllokering> LærerOgKompetenceAllokerings { get; set; }
 
     public virtual DbSet<Studieleder> Studieleders { get; set; }
 
     public virtual DbSet<Uddannelse> Uddannelses { get; set; }
 
+    public virtual DbSet<UddannelseOgFagAllokering> UddannelseOgFagAllokerings { get; set; }
+
+    public virtual DbSet<UddannelseOgLærerAllokering> UddannelseOgLærerAllokerings { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-     => optionsBuilder.UseSqlServer("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=ZealandDB;Integrated Security=True;Encrypt=True");
-
+// To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
+=> optionsBuilder.UseSqlServer("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=ZealandDB;Integrated Security=True;Encrypt=True");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<Akademi>(entity =>
         {
-            entity.HasKey(e => e.AkademiId).HasName("PK__Akademi__DA6D732E80A87704");
+            entity.HasKey(e => e.AkademiId).HasName("PK__Akademi__DA6D732EDB7E7069");
 
             entity.Property(e => e.AntalLærere).HasDefaultValue(0);
         });
 
         modelBuilder.Entity<Fag>(entity =>
         {
-            entity.HasKey(e => e.FagId).HasName("PK__Fag__9A31300BEE3D2E9C");
-
-            entity.HasOne(d => d.Uddannelse).WithMany(p => p.Fags)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__Fag__UddannelseI__33D4B598");
+            entity.HasKey(e => e.FagId).HasName("PK__Fag__9A31300B59254135");
         });
 
-        modelBuilder.Entity<HukommelseRam>(entity =>
+        modelBuilder.Entity<Kompetence>(entity =>
         {
-            entity.HasKey(e => e.HukommelseRamid).HasName("PK__Hukommel__782821096A2FF677");
+            entity.HasKey(e => e.KompetenceId).HasName("PK__Kompeten__C03DB50565161100");
 
-            entity.HasOne(d => d.Akademi).WithMany(p => p.HukommelseRams)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__Hukommels__Akade__398D8EEE");
-
-            entity.HasOne(d => d.Fag).WithMany(p => p.HukommelseRams)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__Hukommels__FagID__3B75D760");
-
-            entity.HasOne(d => d.Kompetence).WithMany(p => p.HukommelseRams)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__Hukommels__Kompe__3D5E1FD2");
-
-            entity.HasOne(d => d.Lærer).WithMany(p => p.HukommelseRams)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__Hukommels__Lærer__3C69FB99");
-
-            entity.HasOne(d => d.Uddannelse).WithMany(p => p.HukommelseRams)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__Hukommels__Uddan__3A81B327");
+            entity.HasOne(d => d.Fag).WithMany(p => p.Kompetences)
+                .OnDelete(DeleteBehavior.SetNull)
+                .HasConstraintName("FK_Kompetence_Fag");
         });
 
-        modelBuilder.Entity<Kompetencer>(entity =>
+        modelBuilder.Entity<Lærer>(entity =>
         {
-            entity.HasKey(e => e.KompetenceId).HasName("PK__Kompeten__C03DB505A9DEFA5B");
-
-            entity.HasOne(d => d.Fag).WithMany(p => p.Kompetencers)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__Kompetenc__FagID__36B12243");
-        });
-
-        modelBuilder.Entity<Lærere>(entity =>
-        {
-            entity.HasKey(e => e.LærerId).HasName("PK__Lærere__60F459019D9A044A");
+            entity.HasKey(e => e.LærerId).HasName("PK__Lærer__60F4590194E88B8A");
 
             entity.Property(e => e.Status).HasDefaultValue("Aktiv");
             entity.Property(e => e.Timetal).HasDefaultValue(0);
+        });
 
-            entity.HasOne(d => d.Akademi).WithMany(p => p.Læreres)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__Lærere__AkademiI__2A4B4B5E");
+        modelBuilder.Entity<LærerOgKompetenceAllokering>(entity =>
+        {
+            entity.HasKey(e => e.Lokaid).HasName("PK__LærerOgK__D84932828512A431");
+
+            entity.HasOne(d => d.Kompetence).WithMany(p => p.LærerOgKompetenceAllokerings)
+                .OnDelete(DeleteBehavior.Cascade)
+                .HasConstraintName("FK_LOKA_Kompetence");
+
+            entity.HasOne(d => d.Lærer).WithMany(p => p.LærerOgKompetenceAllokerings)
+                .OnDelete(DeleteBehavior.Cascade)
+                .HasConstraintName("FK_LOKA_Lærer");
         });
 
         modelBuilder.Entity<Studieleder>(entity =>
         {
-            entity.HasKey(e => e.StudielederId).HasName("PK__Studiele__ED5E959C00C1A58F");
+            entity.HasKey(e => e.StudielederId).HasName("PK__Studiele__ED5E959C1AA16FA4");
 
             entity.HasOne(d => d.Akademi).WithMany(p => p.Studieleders)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__Studieled__Akade__30F848ED");
+                .OnDelete(DeleteBehavior.SetNull)
+                .HasConstraintName("FK_Studieleder_Akademi");
         });
 
         modelBuilder.Entity<Uddannelse>(entity =>
         {
-            entity.HasKey(e => e.UddannelseId).HasName("PK__Uddannel__DA78925E8454601D");
+            entity.HasKey(e => e.UddannelseId).HasName("PK__Uddannel__DA78925EEC3304F6");
 
             entity.HasOne(d => d.Akademi).WithMany(p => p.Uddannelses)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__Uddannels__Akade__2D27B809");
+                .OnDelete(DeleteBehavior.SetNull)
+                .HasConstraintName("FK_Uddannelse_Akademi");
+        });
+
+        modelBuilder.Entity<UddannelseOgFagAllokering>(entity =>
+        {
+            entity.HasKey(e => e.Uofaid).HasName("PK__Uddannel__4E6A0B0F92A617EA");
+
+            entity.HasOne(d => d.Fag).WithMany(p => p.UddannelseOgFagAllokerings)
+                .OnDelete(DeleteBehavior.Cascade)
+                .HasConstraintName("FK_UOFA_Fag");
+
+            entity.HasOne(d => d.Uddannelse).WithMany(p => p.UddannelseOgFagAllokerings)
+                .OnDelete(DeleteBehavior.Cascade)
+                .HasConstraintName("FK_UOFA_Uddannelse");
+        });
+
+        modelBuilder.Entity<UddannelseOgLærerAllokering>(entity =>
+        {
+            entity.HasKey(e => e.Uolaid).HasName("PK__Uddannel__E84B41CC1DBB2E71");
+
+            entity.HasOne(d => d.Lærer).WithMany(p => p.UddannelseOgLærerAllokerings)
+                .OnDelete(DeleteBehavior.Cascade)
+                .HasConstraintName("FK_UOLA_Laerer");
+
+            entity.HasOne(d => d.Uddannelse).WithMany(p => p.UddannelseOgLærerAllokerings)
+                .OnDelete(DeleteBehavior.Cascade)
+                .HasConstraintName("FK_UOLA_Uddannelse");
         });
 
         OnModelCreatingPartial(modelBuilder);

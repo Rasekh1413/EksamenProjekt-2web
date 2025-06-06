@@ -7,12 +7,12 @@ namespace EFCZealand.Pages.Lærer;
 
 public class OpretModel : PageModel
 {
-	private ILærereRepository _repo;
+	private ILærerRepository _repo;
 
 	[BindProperty]
-	public Lærere Element { get; set; } = new Lærere();
+	public Models.Lærer Element { get; set; } = new Models.Lærer();
 
-	public OpretModel(ILærereRepository repo)
+	public OpretModel(ILærerRepository repo)
 	{
 		_repo = repo;
 	}

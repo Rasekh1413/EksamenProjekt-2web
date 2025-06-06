@@ -12,7 +12,7 @@ namespace EFCZealand.Models;
 public partial class Fag : IHarId
 {
     [NotMapped]
-    public int Id 
+    public int Id
     {
         get { return FagId; }
         set { FagId = value; }
@@ -22,20 +22,15 @@ public partial class Fag : IHarId
     [Column("FagID")]
     public int FagId { get; set; }
 
-    [Required]
     [StringLength(100)]
     public string FagNavn { get; set; }
 
-    [Column("UddannelseID")]
-    public int UddannelseId { get; set; }
+    [StringLength(250)]
+    public string FagBeskrivelse { get; set; }
 
     [InverseProperty("Fag")]
-    public virtual ICollection<HukommelseRam> HukommelseRams { get; set; } = new List<HukommelseRam>();
+    public virtual ICollection<Kompetence> Kompetences { get; set; } = new List<Kompetence>();
 
     [InverseProperty("Fag")]
-    public virtual ICollection<Kompetencer> Kompetencers { get; set; } = new List<Kompetencer>();
-
-    [ForeignKey("UddannelseId")]
-    [InverseProperty("Fags")]
-    public virtual Uddannelse Uddannelse { get; set; }
+    public virtual ICollection<UddannelseOgFagAllokering> UddannelseOgFagAllokerings { get; set; } = new List<UddannelseOgFagAllokering>();
 }

@@ -21,10 +21,10 @@ public interface IAkademiRepository : IRepository<Akademi>
 public interface IStudielederRepository : IRepository<Studieleder>
 {
 }
-public interface ILærereRepository : IRepository<Lærere>
+public interface ILærerRepository : IRepository<Lærer>
 {
 }
-public interface IKompetencerRepository : IRepository<Kompetencer>
+public interface IKompetenceRepository : IRepository<Kompetence>
 {
 }
 public interface IFagRepository : IRepository<Fag>
@@ -33,6 +33,12 @@ public interface IFagRepository : IRepository<Fag>
 public interface IUddannelseRepository : IRepository<Uddannelse>
 {
 }
-public interface IHukommelseRamRepository : IRepository<HukommelseRam>
+public interface ILærerOgKompetenceAllokeringRepository : IRepository<LærerOgKompetenceAllokering>
+{
+}
+public interface IUddannelseOgLærerAllokeringRepository : IRepository<UddannelseOgLærerAllokering>
+{
+}
+public interface IUddannelseOgFagAllokeringRepository : IRepository<UddannelseOgFagAllokering>
 {
 }

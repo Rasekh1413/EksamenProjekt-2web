@@ -1,0 +1,49 @@
+﻿@page
+@model EFCZealand.Pages.Studieledere.AlleModel
+@{
+}
+
+<h1 class="display-3 mb-5">Studieledere</h1>
+
+<div class="container">
+    <div class="row">
+        @foreach (var elem in Model.Data)
+        {
+            <div class="col-md-4 p-3">
+                <div class="card shadow" style="width: 18rem;">
+                    <div class="card-body d-flex flex-column">
+                        <h3 class="card-title">@elem.Navn</h3>
+                        <h8>Akademi: @(elem.Akademi?.AkademiNavn ?? "Ingen Akademi, Studielederen er ikke aktiv")</h8>
+                        <h8>Email: @(elem.Email)</h8>
+                        <h8>Telefonnummer: @(elem.Telefon)</h8>
+                        <h8>StudielederId: @(elem.StudielederId)</h8>
+                        <h8>AkademiId: @(elem.AkademiId)</h8>
+                        <div>
+                            @if (Model.CanDelete(elem.Id))
+                            {
+                                <a class="btn btn-outline-danger btn-sm mt-3"
+                                   type="button"
+                                   title="Slet"
+                                   asp-page="Slet"
+                                   asp-route-id="@elem.Id">
+                                    <i class="bi-trash"></i>
+                                </a>
+                            }
+                            else
+                            {
+                                <a class="btn btn-outline-dark btn-sm mt-3"
+                                   title="Kan ikke slettes">
+                                    <i class="bi-slash-circle"></i>
+                                </a>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+<p>
+    <a class="btn btn-outline-primary mt-3" asp-page="Opret"> Opret en ny Studieleder</a>
+</p>

@@ -8,7 +8,7 @@ public class FagRepository : EFCRepositoryBase<Fag, ZealandDBContext>, IFagRepos
 	protected override IQueryable<Fag> GetAllWithIncludes(DbContext context)
 	{
 		return base.GetAllWithIncludes(context)
-			.Include(f => f.Uddannelse);
-
+		//.Include(f => f.FagNavn)
+	;
 	}
 }

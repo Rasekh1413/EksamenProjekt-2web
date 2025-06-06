@@ -4,9 +4,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace EFCZealand.Services;
 
-public class KompetencerRepository : EFCRepositoryBase<Kompetencer, ZealandDBContext>, IKompetencerRepository
+public class KompetencerRepository : EFCRepositoryBase<Kompetence, ZealandDBContext>, IKompetenceRepository
 {
-	protected override IQueryable<Kompetencer> GetAllWithIncludes(DbContext context)
+	protected override IQueryable<Kompetence> GetAllWithIncludes(DbContext context)
 	{
 		return base.GetAllWithIncludes(context);
 	}

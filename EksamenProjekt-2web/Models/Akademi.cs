@@ -22,33 +22,29 @@ public partial class Akademi : IHarId
     [Column("AkademiID")]
     public int AkademiId { get; set; }
 
-    [Required]
     [StringLength(100)]
     public string AkademiNavn { get; set; }
 
     [StringLength(500)]
-    public string Beskrivelse { get; set; }
+    public string AkademiBeskrivelse { get; set; }
 
-    [Required]
     [StringLength(200)]
     public string AkademiAdresse { get; set; }
 
-    [Required]
     [StringLength(100)]
     public string AkademiLokation { get; set; }
 
     public int? AntalLærere { get; set; }
 
-    [InverseProperty("Akademi")]
-    public virtual ICollection<HukommelseRam> HukommelseRams { get; set; } = new List<HukommelseRam>();
-
-    [InverseProperty("Akademi")]
-    public virtual ICollection<Lærere> Læreres { get; set; } = new List<Lærere>();
 
     [InverseProperty("Akademi")]
     public virtual ICollection<Studieleder> Studieleders { get; set; } = new List<Studieleder>();
 
     [InverseProperty("Akademi")]
     public virtual ICollection<Uddannelse> Uddannelses { get; set; } = new List<Uddannelse>();
+
+
+ 
     
+
 }

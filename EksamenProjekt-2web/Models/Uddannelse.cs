@@ -10,10 +10,10 @@ namespace EFCZealand.Models;
 
 [Table("Uddannelse")]
 public partial class Uddannelse : IHarId
-
 {
     [NotMapped]
-    public int Id     {
+    public int Id
+    {
         get { return UddannelseId; }
         set { UddannelseId = value; }
     }
@@ -22,14 +22,13 @@ public partial class Uddannelse : IHarId
     [Column("UddannelseID")]
     public int UddannelseId { get; set; }
 
-    [Required]
     [StringLength(100)]
     public string UddannelseNavn { get; set; }
 
     [StringLength(500)]
-    public string Beskrivelse { get; set; }
+    public string UddannelseBeskrivelse { get; set; }
 
-    public int Semester { get; set; }
+    public int? Semester { get; set; }
 
     [StringLength(50)]
     public string Lokale { get; set; }
@@ -38,15 +37,15 @@ public partial class Uddannelse : IHarId
     public DateTime? Kalender { get; set; }
 
     [Column("AkademiID")]
-    public int AkademiId { get; set; }
+    public int? AkademiId { get; set; }
 
     [ForeignKey("AkademiId")]
     [InverseProperty("Uddannelses")]
     public virtual Akademi Akademi { get; set; }
 
     [InverseProperty("Uddannelse")]
-    public virtual ICollection<Fag> Fags { get; set; } = new List<Fag>();
+    public virtual ICollection<UddannelseOgFagAllokering> UddannelseOgFagAllokerings { get; set; } = new List<UddannelseOgFagAllokering>();
 
     [InverseProperty("Uddannelse")]
-    public virtual ICollection<HukommelseRam> HukommelseRams { get; set; } = new List<HukommelseRam>();
+    public virtual ICollection<UddannelseOgLærerAllokering> UddannelseOgLærerAllokerings { get; set; } = new List<UddannelseOgLærerAllokering>();
 }

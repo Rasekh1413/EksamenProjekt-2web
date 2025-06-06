@@ -8,19 +8,19 @@ namespace EFCZealand.Pages.Lærer;
 
 public class SletModel : PageModel
 {
-	private ILærereRepository _repo;
+	private ILærerRepository _repo;
 
 	[BindProperty]
-	public Lærere Element { get; set; }
+	public Models.Lærer Element { get; set; }
 
-	public SletModel(ILærereRepository repo)
+	public SletModel(ILærerRepository repo)
 	{
 		_repo = repo;
 	}
 
 	public virtual IActionResult OnGet(int id)
 	{
-		Lærere? element = _repo.Read(id);
+		Models.Lærer? element = _repo.Read(id);
 
 		if (element == null)
 			return RedirectToPage("Error");

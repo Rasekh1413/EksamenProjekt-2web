@@ -7,11 +7,11 @@ namespace EFCZealand.Pages.Lærer;
 
 public class AlleModel : PageModel
 {
-	private ILærereRepository _repo;
+	private ILærerRepository _repo;
 
-	public List<Lærere> Data { get; private set; }
+	public List<Models.Lærer> Data { get; private set; }
 
-	public AlleModel(ILærereRepository repo)
+	public AlleModel(ILærerRepository repo)
 	{
 		_repo = repo;
 	}
@@ -23,9 +23,9 @@ public class AlleModel : PageModel
 
 	public bool CanDelete(int id)
 	{
-		Lærere? lærere = Data.Find(lærere_er => lærere_er.Id == id);
+		Models.Lærer? lærere = Data.Find(lærere_er => lærere_er.Id == id);
 
 		return (lærere != null && lærere.Id == 0);
-        //return (lærere != null && lærere.Id.Count == 0);
+        //return (lærere != null && lærere.Count == 0);
     }
 }

@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore;
 namespace EFCZealand.Models;
 
 [Table("Studieleder")]
-[Index("Email", Name = "UQ__Studiele__A9D10534A5756267", IsUnique = true)]
+[Index("Email", Name = "UQ__Studiele__A9D1053410D175AA", IsUnique = true)]
 public partial class Studieleder : IHarId
 {
     [NotMapped]
@@ -23,7 +23,6 @@ public partial class Studieleder : IHarId
     [Column("StudielederID")]
     public int StudielederId { get; set; }
 
-    [Required]
     [StringLength(100)]
     public string Navn { get; set; }
 
@@ -34,14 +33,15 @@ public partial class Studieleder : IHarId
     [StringLength(20)]
     public string Telefon { get; set; }
 
-    [Required]
     [StringLength(255)]
     public string Adgangskode { get; set; }
 
     [Column("AkademiID")]
-    public int AkademiId { get; set; }
+    public int? AkademiId { get; set; }
 
     [ForeignKey("AkademiId")]
     [InverseProperty("Studieleders")]
     public virtual Akademi Akademi { get; set; }
+  
+
 }

@@ -3,7 +3,7 @@
    "ContextClassName": "ZealandDBContext",
    "ContextNamespace": null,
    "FilterSchemas": false,
-   "IncludeConnectionString": false,
+   "IncludeConnectionString": true,
    "ModelNamespace": null,
    "OutputContextPath": null,
    "OutputPath": "Models",
@@ -23,15 +23,15 @@
          "ObjectType": 0
       },
       {
-         "Name": "[dbo].[HukommelseRAM]",
+         "Name": "[dbo].[Kompetence]",
          "ObjectType": 0
       },
       {
-         "Name": "[dbo].[Kompetencer]",
+         "Name": "[dbo].[Lærer]",
          "ObjectType": 0
       },
       {
-         "Name": "[dbo].[Lærere]",
+         "Name": "[dbo].[LærerOgKompetenceAllokering]",
          "ObjectType": 0
       },
       {
@@ -40,6 +40,14 @@
       },
       {
          "Name": "[dbo].[Uddannelse]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[UddannelseOgFagAllokering]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[UddannelseOgLærerAllokering]",
          "ObjectType": 0
       }
    ],

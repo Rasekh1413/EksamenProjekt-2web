@@ -8,7 +8,9 @@ public class StudielederRepository : EFCRepositoryBase<Studieleder, ZealandDBCon
 {
 	protected override IQueryable<Studieleder> GetAllWithIncludes(DbContext context)
 	{
-		return base.GetAllWithIncludes(context);
-		
+		return base.GetAllWithIncludes(context)
+			.Include(s => s.Akademi)
+          .Include(navigationPropertyPath: s => s.Akademi)
+        ;
 	}
 }

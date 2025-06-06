@@ -12,10 +12,12 @@ builder.Services.AddSingleton<IAkademiRepository, AkademiRepository>();
 builder.Services.AddSingleton<IStudielederRepository, StudielederRepository>();
 builder.Services.AddSingleton<IUddannelseRepository, UddannelseRepository>();
 builder.Services.AddSingleton<IFagRepository, FagRepository>();
-builder.Services.AddSingleton<ILærereRepository, LærereRepository>();
-builder.Services.AddSingleton<IKompetencerRepository, KompetencerRepository>();
+builder.Services.AddSingleton<ILærerRepository, LærerRepository>();
+builder.Services.AddSingleton<IKompetenceRepository, KompetencerRepository>();
 
-builder.Services.AddSingleton<IHukommelseRamRepository, HukommelseRamRepository>();
+builder.Services.AddSingleton<ILærerOgKompetenceAllokeringRepository, LærerOgKompetenceAllokeringRepository>();
+builder.Services.AddSingleton<IUddannelseOgLærerAllokeringRepository, UddannelseOgLærerAllokeringRepository>();
+builder.Services.AddSingleton<IUddannelseOgFagAllokeringRepository, UddannelseOgFagAllokeringRepository>();
 
 
 

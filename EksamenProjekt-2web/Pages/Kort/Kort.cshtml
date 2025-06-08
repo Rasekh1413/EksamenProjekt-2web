@@ -2,11 +2,16 @@
 @model EksamenProjekt_2web.Pages.Kort.KortModel
 @using System.Text.Json
 
+
 @{
     var jsonOptions = new JsonSerializerOptions
             {
                 PropertyNamingPolicy = JsonNamingPolicy.CamelCase
             };
+    if (Model.IsIframe)
+    {
+        Layout = null;
+    }
 }
 
 <head>

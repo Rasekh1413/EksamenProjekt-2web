@@ -1,9 +1,11 @@
+using EFCZealand.Models;
 using EFCZealand.Services;
-//using Microsoft.AspNetCore.DataProtection.Repositories;
+using Microsoft.AspNetCore.DataProtection;
+using Microsoft.AspNetCore.DataProtection.Repositories;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Data.SqlClient;
 
 var builder = WebApplication.CreateBuilder(args);
-
-var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 
 // Add services to the container.
 builder.Services.AddRazorPages();
@@ -18,7 +20,6 @@ builder.Services.AddSingleton<IKompetenceRepository, KompetencerRepository>();
 builder.Services.AddSingleton<ILærerOgKompetenceAllokeringRepository, LærerOgKompetenceAllokeringRepository>();
 builder.Services.AddSingleton<IUddannelseOgLærerAllokeringRepository, UddannelseOgLærerAllokeringRepository>();
 builder.Services.AddSingleton<IUddannelseOgFagAllokeringRepository, UddannelseOgFagAllokeringRepository>();
-
 
 
 var app = builder.Build();

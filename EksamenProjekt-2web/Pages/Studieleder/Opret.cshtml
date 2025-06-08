@@ -7,14 +7,14 @@
 
 <form method="post">
     <div class="form-group mb-3">
-        <label asp-for="@Model.Element.Navn" class="control-label"></label>
+        <label asp-for="@Model.Element.Navn" class="control-label">Skriv studieleder navn</label>
         <input asp-for="@Model.Element.Navn" class="form-control" />
         <span asp-validation-for="@Model.Element.Navn" class="text-danger"></span>
     </div>
 
 
     <div class="form-group mb-3">
-        <label asp-for="@Model.Element.Akademi.AkademiNavn" class="control-label"></label>
+        <label asp-for="@Model.Element.Akademi.AkademiNavn" class="control-label">Valg en akademi</label>
         <input asp-for="@Model.Element.Akademi.AkademiNavn" class="form-control" />
         <span asp-validation-for="@Model.Element.Akademi.AkademiNavn" class="text-danger"></span>
     </div>
@@ -22,16 +22,17 @@
 
 
     <div class="form-group mb-3">
-        <label asp-for="@Model.Element.Email" class="control-label"></label>
+        <label asp-for="@Model.Element.Email" class="control-label">Email</label>
         <input asp-for="@Model.Element.Email" class="form-control" />
         <span asp-validation-for="@Model.Element.Email" class="text-danger"></span>
     </div>
 
     <div class="form-group mb-3">
-        <label asp-for="@Model.Element.Telefon" class="control-label"></label>
+        <label asp-for="@Model.Element.Telefon" class="control-label">Telefonnummer</label>
         <input asp-for="@Model.Element.Telefon" class="form-control" />
         <span asp-validation-for="@Model.Element.Email" class="text-danger"></span>
     </div>
+
 
     <p>
         <div class="form-group mb-3">

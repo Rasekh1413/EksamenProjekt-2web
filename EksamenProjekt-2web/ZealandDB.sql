@@ -1,4 +1,4 @@
--- Opret ZealandDB på lokale computer, Microsoft-SQL
+-- Opret en ZealandDB på lokale computer, eller også på online - Microsoft-SQL
 
 DROP TABLE IF EXISTS dbo.UddannelseOgLærerAllokering;
 DROP TABLE IF EXISTS dbo.UddannelseOgFagAllokering;

@@ -5,10 +5,12 @@ namespace EksamenProjekt_2web.Pages.Kort
 {
     public class KortModel : PageModel
     {
+        public bool IsIframe { get; private set; }
         public List<Location> AkademiLokationer { get; set; } = new List<Location>();
 
         public void OnGet()
         {
+            IsIframe = string.Equals(Request.Query["iframe"], "true");
             AkademiLokationer = new List<Location>
             {
                 new Location { Name = "Zealand Roskilde", Latitude = 55.6415, Longitude = 12.0803 },

@@ -13,19 +13,26 @@
                 <div class="card shadow" style="width: 20rem;">
                     <div class="card-body d-flex flex-column">
                         <h3 class="card-title">@elem.Navn</h3>
-                        <h8>Ansættelsesform: @(elem.Ansættelsesform)</h8>
-                        <h8>Status: @(elem.Status)</h8>
-                        <h8>Timetal: @(elem.Timetal)</h8>
                         <h8>Email: @(elem.Email)</h8>
                         <h8>Telefonnummer: @(elem.Telefonnummer)</h8>
-                        <h8>SemesterErfaring: @(elem.SemesterErfaring)</h8>
+                        <br>
+                        <h8>Ansættelsesform: @(elem.Ansættelsesform)</h8>
+                        <h8>Status: @(elem.Status)</h8>
+                        <h8>Timetal: @(elem.Timetal) timer per uge</h8>
+
+                        <br>
                         <h8>Hjemmeplacering: @(elem.Hjemmeplacering)</h8>
                         <h8>Primærplacering: @(elem.Primærplacering)</h8>
                         <h8>Sekundaereplaceringer: @(elem.Sekundaereplaceringer)</h8>
-                        <h8>Beviser: @(elem.Beviser)</h8>
-                        <h8>FagligeKvalifikationer: @(elem.FagligeKvalifikationer)</h8>
-                        <h8>PædagogiskeKvalifikationer: @(elem.PædagogiskeKvalifikationer)</h8>
-                        <h8>SpecielleKvalifikationer: @(elem.SpecielleKvalifikationer)</h8>
+                        <br>
+                        <h8>Semester erfaring: @(elem.SemesterErfaring)</h8>
+                        <h8>Beviser: <br>@(elem.Beviser)</h8>
+                        <br>
+                        <h8>Fagligekvalifikationer:<br> @(elem.FagligeKvalifikationer)</h8>
+                        <h8>Pædagogiskekvalifikationer: <br>@(elem.PædagogiskeKvalifikationer)</h8>
+                        <h8>Speciellekvalifikationer: <br>@(elem.SpecielleKvalifikationer)</h8>
+                        <br>
+
 
                         <div>
                             @if (Model.CanDelete(elem.Id))

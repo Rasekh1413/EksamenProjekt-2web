@@ -31,22 +31,34 @@
         <span asp-validation-for="@Model.Element.AkademiAdresse" class="text-danger"></span>
     </div>
 
+
+    
     <div class="form-group mb-3">
-        <label asp-for="@Model.Element.Uddannelses" class="control-label">Uddannelse</label>
-        <input asp-for="@Model.Element.Uddannelses" class="form-control" />
+        <label class="control-label">Valg en Uddannelse</label>
+        <select asp-for="@Model.Element.Uddannelses" asp-items="@Model.UddannelseList" class="form-control"></select>
         <span asp-validation-for="@Model.Element.Uddannelses" class="text-danger"></span>
     </div>
+
+
+
+
 
     <div class="form-group mb-3">
         <label asp-for="@Model.Element.AntalLærere" class="control-label">Hvor mange lærer skal underviser?</label>
         <input asp-for="@Model.Element.AntalLærere" class="form-control" />
         <span asp-validation-for="@Model.Element.AntalLærere" class="text-danger"></span>
     </div>
+
+
+
+
+
     <div class="form-group mb-3">
-        <label asp-for="@Model.Element.Studieleders" class="control-label">Valg en studieleder</label>
-        <input asp-for="@Model.Element.Studieleders" class="form-control" />
+        <label class="control-label">Valg en studieleder</label>
+        <select asp-for="@Model.Element.Studieleders" asp-items="@Model.StudielederList" class="form-control"></select>
         <span asp-validation-for="@Model.Element.Studieleders" class="text-danger"></span>
     </div>
+
 
     <p>
         <div class="form-group mb-3">

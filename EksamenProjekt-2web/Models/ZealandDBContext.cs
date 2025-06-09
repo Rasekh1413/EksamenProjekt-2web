@@ -16,7 +16,7 @@ public partial class ZealandDBContext : DbContext
             optionsBuilder.UseSqlServer(
                 JsonDocument.Parse(File.ReadAllText("appsettings.json"))
                     .RootElement.GetProperty("ConnectionStrings")
-                    .GetProperty("LocalDB").GetString());
+                    .GetProperty("LocalDB").GetString()); // Valg LocalDB eller ServerDB
     }
                     
     public ZealandDBContext()

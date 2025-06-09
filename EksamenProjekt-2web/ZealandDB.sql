@@ -200,28 +200,30 @@ VALUES
 -- Lærer (3 rows)
 INSERT INTO dbo.Lærer (Navn, Email, Telefonnummer, Adgangskode, Ansættelsesform, Timetal, Status, Hjemmeplacering, Primærplacering, Sekundaereplaceringer, FagligeKvalifikationer, PædagogiskeKvalifikationer, SpecielleKvalifikationer, SemesterErfaring, Beviser)
 VALUES
-('Peter Hansen', 'peter.hansen@zealand.dk', '23456789', 'hashedpw1', 'Fastansat', 30, 'Aktiv', 'Køge', 'Køge', 'Roskilde', 'C#, SQL', 'Pædagogikum', 'Ingen', '3', 'Diplom i softwareudvikling'),
-('Sofie Larsen', 'sofie.larsen@zealand.dk', '98765432', 'hashedpw2', 'Deltid', 15, 'Aktiv', 'Roskilde', 'Roskilde', 'Køge', 'HTML, CSS, JS', 'Pædagogikum', 'Specialundervisning', '2', 'Certifikat i webdesign'),
-('Mikkel Mortensen', 'mikkel.mortensen@zealand.dk', '34567890', 'hashedpw3', 'Fastansat', 37, 'Aktiv', 'Næstved', 'Næstved', 'Slagelse', 'Finans, Regnskab', 'Pædagogikum', 'Ingen', '4', 'Master i finans');
+('Peter Hansen', 'peter.hansen@zealand.dk', '23456789', 'hashedpw1', 'Fultid', 30, 'Aktiv', 'Køge', 'Køge', 'Roskilde', 'C#, SQL', 'Pædagogikum', 'Høj niveau i Matematik', '3', 'Diplom i softwareudvikling'),
+('Sofie Larsen', 'sofie.larsen@zealand.dk', '98765432', 'hashedpw2', 'Deltid', 15, 'Aktiv', 'Roskilde', 'Roskilde', 'Køge', 'HTML, CSS, JS', 'Pædagogikum', 'Høj niveau i Apple Mac', '2', 'Certifikat i webdesign'),
+('Mikkel Mortensen', 'mikkel.mortensen@zealand.dk', '34567890', 'hashedpw3', 'Fultid', 37, 'Aktiv', 'Næstved', 'Næstved', 'Slagelse', 'Finans, Regnskab', 'Pædagogikum', 'Høj niveau i Linux', '4', 'Master i finans');
 
 -- UddannelseOgFagAllokering (3 rows)
 INSERT INTO dbo.UddannelseOgFagAllokering (UOFAidBeskrivelse, UddannelseID, FagID)
 VALUES
-('Datamatiker obligatoriske fag', 1, 1),
-('Finansøkonom obligatoriske fag', 2, 3),
-('IT-teknolog valgfrie fag', 3, 2);
+('Programmering', 1, 1),
+('Ingeniør', 2, 3),
+('Sikkerhed', 3, 2);
 
 -- LærerOgKompetenceAllokering (3 rows)
 INSERT INTO dbo.LærerOgKompetenceAllokering (LOKAidBeskrivelse, LærerID, KompetenceID)
 VALUES
-('Peter ekspert i SQL', 1, 1),
-('Sofie ekspert i frontend', 2, 3),
-('Mikkel ekspert i finans', 3, 2);
+('Peter ekspert i C#', 1, 1),
+('Sofie ekspert i Swift', 2, 3),
+('Mikkel ekspert i Kotlin', 3, 2);
 
--- UddannelseOgLærerAllokering (3 rows)
+
+-- UddannelseOgLærerAllokering (3 rows with time included)
 INSERT INTO dbo.UddannelseOgLærerAllokering (StartTid, SlutTid, UOLABeskrivelse, UddannelseID, LærerID)
 VALUES
-('2025-09-01', '2026-01-31', 'Peter underviser i Datamatiker', 1, 1),
-('2025-09-01', '2026-01-31', 'Sofie underviser i Finansøkonom', 2, 2),
-('2025-09-01', '2026-01-31', 'Mikkel underviser i IT-teknolog', 3, 3);
+('2025-09-01 08:00:00', '2026-01-31 14:00:00', 'Peter underviser i Datamatiker', 1, 1),
+('2025-09-01 08:00:00', '2026-01-31 14:00:00', 'Sofie underviser i Finansøkonom', 2, 2),
+('2025-09-01 08:00:00', '2026-01-31 14:00:00', 'Mikkel underviser i IT-teknolog', 3, 3);
+
 

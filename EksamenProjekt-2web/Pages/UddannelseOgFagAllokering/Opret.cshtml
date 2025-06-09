@@ -3,22 +3,22 @@
 @{
 }
 
-<h1 class="display-3 mb-5">Opret ny Hukommelse RAM sted</h1>
+<h1 class="display-3 mb-5">Tilføj en ny fag til en uddannelse</h1>
 
 <form method="post">
     <div class="form-group mb-3">
-        <label asp-for="@Model.Element.Uofaid" class="control-label"></label>
-        <input asp-for="@Model.Element.Id" class="form-control" />
-        <span asp-validation-for="@Model.Element.UofaidBeskrivelse" class="text-danger"></span>
+        <label asp-for="@Model.Element.Fag.FagNavn" class="control-label">Valg en fag Navn</label>
+        <input asp-for="@Model.Element.Fag.FagNavn" class="form-control" />
+        <span asp-validation-for="@Model.Element.Fag.FagNavn" class="text-danger"></span>
     </div>
     <div class="form-group mb-3">
-        <label asp-for="@Model.Element.Uofaid" class="control-label"></label>
-        <input asp-for="@Model.Element.Id" class="form-control" />
-        <span asp-validation-for="@Model.Element.UofaidBeskrivelse" class="text-danger"></span>
+        <label asp-for="@Model.Element.Uddannelse.UddannelseNavn" class="control-label">Valg en uddannelse</label>
+        <input asp-for="@Model.Element.Uddannelse.UddannelseNavn" class="form-control" />
+        <span asp-validation-for="@Model.Element.Uddannelse.UddannelseNavn" class="text-danger"></span>
     </div>
     <div class="form-group mb-3">
-        <label asp-for="@Model.Element.Uofaid" class="control-label"></label>
-        <input asp-for="@Model.Element.Id" class="form-control" />
+        <label asp-for="@Model.Element.UofaidBeskrivelse" class="control-label">Skriv beskrivelse</label>
+        <input asp-for="@Model.Element.UofaidBeskrivelse" class="form-control" />
         <span asp-validation-for="@Model.Element.UofaidBeskrivelse" class="text-danger"></span>
     </div>
 

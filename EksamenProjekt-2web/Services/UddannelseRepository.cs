@@ -8,7 +8,11 @@ public class UddannelseRepository : EFCRepositoryBase<Uddannelse, ZealandDBConte
 {
 	protected override IQueryable<Uddannelse> GetAllWithIncludes(DbContext context)
 	{
-		return base.GetAllWithIncludes(context);
-		
-	}
+		return base.GetAllWithIncludes(context)
+
+			.Include(rUddannelse => rUddannelse.UddannelseOgFagAllokerings)
+			.Include(rUddannelse => rUddannelse.UddannelseOgLærerAllokerings)
+			.Include(rUddannelse => rUddannelse.Akademi)
+            ;
+    }
 }

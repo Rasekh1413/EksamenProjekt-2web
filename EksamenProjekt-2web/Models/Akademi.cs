@@ -43,8 +43,4 @@ public partial class Akademi : IHarId
     [InverseProperty("Akademi")]
     public virtual ICollection<Uddannelse> Uddannelses { get; set; } = new List<Uddannelse>();
 
-
- 
-    
-
 }

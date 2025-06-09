@@ -13,8 +13,11 @@
                 <div class="card shadow" style="width: 18rem;">
                     <div class="card-body d-flex flex-column">
                         <h3 class="card-title">@elem.LokaidBeskrivelse</h3>
-                        <h5>@(elem.Kompetence)</h5>
-                        <h5>@(elem.Id)</h5>
+                        <h7>Lærer navn: @(elem.Lærer.Navn)</h7>
+                        <h7>Lærerens kompetencer:<br> @(elem.Kompetence.KompetenceNavn)</h7>
+                        <br>
+                        <h8><p><i>Kompetence ID nummer: @(elem.Id)</i></p></h8>
+                        <a  class="btn btn-outline-primary mt-3">Se Lærer</a>
                         <div>
                             @if (Model.CanDelete(elem.Id))
                             {

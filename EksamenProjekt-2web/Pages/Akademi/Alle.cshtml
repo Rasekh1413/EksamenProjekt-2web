@@ -16,8 +16,15 @@
                         <h5>Lokation: @(elem.AkademiLokation)</h5>
                         <h7>Beskrivelse:</h7>
                         <p><i>@(elem.AkademiBeskrivelse)</i></p>
-                        <h8>Uddannelse: @(elem.Uddannelses)</h8>
-                        <h8>Studieleder: @(elem.Studieleders)</h8>
+
+@*                      <h8>Uddannelse: @(elem.Uddannelses)</h8>
+                        <h8>Studieleder: @(elem.Studieleders)</h8> *@
+
+                        <h8>Uddannelse: @string.Join(", ", elem.Uddannelses.Select(u => u.UddannelseNavn))</h8>
+                        <h8>Studieleder: @string.Join(", ", elem.Studieleders.Select(s => s.Navn))</h8>
+
+
+
                         <h8>Antal Lærere: @(elem.AntalLærere)</h8>
                         <h9>Adresse: @(elem.AkademiAdresse)</h9>
                         <div>

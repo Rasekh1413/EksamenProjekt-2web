@@ -8,6 +8,9 @@ public class LærerOgKompetenceAllokeringRepository : EFCRepositoryBase<LærerOg
 	protected override IQueryable<LærerOgKompetenceAllokering> GetAllWithIncludes(DbContext context)
 	{
 		return base.GetAllWithIncludes(context)
-	;
+
+			.Include(rLærerOgKompetenceAllokering => rLærerOgKompetenceAllokering.Lærer)
+			.Include(rLærerOgKompetenceAllokering => rLærerOgKompetenceAllokering.Kompetence)
+    ;
     }
 }

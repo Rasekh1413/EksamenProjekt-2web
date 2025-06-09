@@ -9,8 +9,8 @@ public class AkademiRepository : EFCRepositoryBase<Akademi, ZealandDBContext>, I
     protected override IQueryable<Akademi> GetAllWithIncludes(DbContext context)
     {
         return base.GetAllWithIncludes(context)
-            .Include(s => s.Uddannelses)
-          //Include(navigationPropertyPath: s => s.Uddannelses)
-          ;
+            .Include(rAkademi => rAkademi.Uddannelses)
+            .Include(rAkademi => rAkademi.Studieleders)
+            ;
     }
 }

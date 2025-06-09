@@ -3,7 +3,7 @@
 @{
 }
 
-<h1 class="display-3 mb-5">Uddannelse og Lærer</h1>
+<h1 class="display-3 mb-5">Kalender for Uddannelse og Lærer</h1>
 
 <div class="container">
     <div class="row">
@@ -13,8 +13,14 @@
                 <div class="card shadow" style="width: 18rem;">
                     <div class="card-body d-flex flex-column">
                         <h3 class="card-title">@elem.Uolabeskrivelse</h3>
-                        <h5>@(elem.Uolaid)</h5>
-                        <h5>@(elem.Id)</h5>
+                        <h7>Lærers navn: @(elem.Lærer.Navn)</h7>
+                        <h7>På hvilke uddannelse underviser?: @(elem.Uddannelse.UddannelseNavn)</h7>
+                        <br>
+                        <h7>Hvornår starter?:<br> @(elem.StartTid)</h7>
+                        <br>
+                        <h7>Hvornår slutter?:<br> @(elem.SlutTid)</h7>
+                        <br>
+                        <h8><p><i>ID nummer: @(elem.Uolaid)</i></p></h8>
                         <div>
                             @if (Model.CanDelete(elem.Id))
                             {
@@ -42,5 +48,5 @@
 </div>
 
 <p>
-    <a class="btn btn-outline-primary mt-3" asp-page="Opret"> Side</a>
+    <a class="btn btn-outline-primary mt-3" asp-page="Opret"> Opret en ny tid</a>
 </p>
